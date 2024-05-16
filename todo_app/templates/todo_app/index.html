@@ -1,13 +1,17 @@
-<!-- todo_list/todo_app/templates/base.html -->
-<!-- Base template -->
-<!doctype html>
-<html lang="en">
+<!-- todo_list/todo_app/templates/todo_app/index.html -->
 
-<head>
-    <!-- Required meta tags-->
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-</head>
+{% extends "base.html" %}
+{% block content %}
 
+<!--index.html-->
+{% if object_list %}
+<h3> All my lists</h3>
+{% endif %}
 
-</html>
+<ul>
+    {% for todolist in object_list %}
+    <li>
+        <div role="button" onclick="location.href"
+    </li>
+
+</ul>
