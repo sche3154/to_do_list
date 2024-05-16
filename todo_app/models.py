@@ -8,7 +8,7 @@ from django.db import models
 from django.urls import reverse
 
 def one_week_hence():
-    return timezone.now + timezone.timedelta(days=7)
+    return timezone.now() + timezone.timedelta(days=7)
 
 class ToDoList(models.Model):
 
