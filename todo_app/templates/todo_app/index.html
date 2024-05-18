@@ -10,7 +10,7 @@
 <ul>
     {% for todolist in object_list %}
     <li>
-        <div role="button" onclick="location.href='{% url "todo_app:list" to }'">
+        <div role="button" onclick="location.href='{% url "todo_app:list" todolist.id %}'">
             {{todolist.title}}
         </div>
     </li>
@@ -18,15 +18,13 @@
     <h4>You have no lists!</h4>
     {% endfor %}
 </ul>
+<p>
+    <input
+        value="Add a new list"
+        type="button"
+        onclick="location.href='{% url "todo_app:list-add" %}'"
+    />
+</p>
 
 {% endblock %}
 
-<!-- <div
-
-role="button"
-
-onclick="location.href='{% url "list" todolist.id %}'">
-
-{{ todolist.title }}
-
-</div> -->
