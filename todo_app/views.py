@@ -90,6 +90,12 @@ class ItemDelete(DeleteView):
     def get_success_url(self, **kwargs):
         context = super().get_context_data(**kwargs)
         context["todo_list"] = self.object.todo_list
+        return reverse_lazy("list", args=[self.kwargs["list_id"]])
+    
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context["todo_list"] = self.object.todo_list
         return context
+
 
 
