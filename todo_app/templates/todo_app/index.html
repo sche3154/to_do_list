@@ -5,13 +5,17 @@
 <!--index.html-->
 {% if object_list %}
 <h3> All my lists</h3>
+<form method="GET" action="{% url 'todo_app:index' %}">
+    <input type="text" name="q" placeholder="Search Lists..." value="{{ request.GET.q }}">
+    <button type="submit">Search</button>
+</form>
 {% endif %}
 
 <ul>
     {% for todolist in object_list %}
     <li>
-        <div role="button" onclick="location.href='{% url "todo_app:list" todolist.id %}'">
-            {{todolist.title}}
+        <div>
+            <a href='{% url "todo_app:list" todolist.id %}'>{{todolist.title}} </a>
         </div>
     </li>
     {% empty %}

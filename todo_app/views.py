@@ -1,3 +1,4 @@
+from django.db.models.query import QuerySet
 from django.urls import reverse, reverse_lazy
 from django.views.generic import ListView, CreateView, UpdateView, DeleteView
 from .models import ToDoList, ToDoItem
@@ -7,7 +8,12 @@ class ToDoListView(ListView):
     model = ToDoList
     template_name = "todo_app/index.html"
 
-    
+    def get_queryset(self):
+        query = self.request.GET.get('q')
+        if query:
+            return ToDoList.objects.filter(title__icontains=query)
+        return ToDoList.objects.all()
+
 
 class ItemListView(ListView):
     model = ToDoItem
@@ -20,6 +26,10 @@ class ItemListView(ListView):
         context["todo_list"] = ToDoList.objects.get(id=self.kwargs["list_id"])
 
         return context
+    
+    def get_queryset(self):
+        todo_list = ToDoList.objects.get(id=self.kwargs["list_id"])
+        return ToDoItem.objects.filter(todo_list = todo_list)
 
 class ListCreate(CreateView):
     model = ToDoList

@@ -12,15 +12,19 @@
     <link rel="stylesheet" href="https://cdn.simplecss.org/simple.min.css">
     <!-- Un-Minified version -->
     <link rel="stylesheet" href="https://cdn.simplecss.org/simple.css">
-    <title>Django To-do Lists</title>
+    <title>To Do Lists</title>
+    <div>
+        <h1>
+            <a href='{% url "todo_app:index" %}'>
+                To Do Lists
+            </a>  
+        </h1>
+    </div>
 </head>
 
 <body>
-    <div>
-        <h1 onclick="location.href='{% url "todo_app:index" %}'">
-            Django To-do Lists
-        </h1>
-    </div>
+    {% block page_title %}
+    {% endblock page_title %}
     <div>
         {% block content %}
         This content will be replaced by different html code for each page.

@@ -1,5 +1,8 @@
 <!-- todo_list/todo_app/templates/todo_app/todo_list.html -->
 {% extends "base.html" %}
+{% block page_title %}
+    <h3>{{todo_list.title}}</h3>
+{% endblock page_title %}
 {% block content %}
 <div>
     <div>
